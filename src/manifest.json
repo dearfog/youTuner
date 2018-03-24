@@ -1,13 +1,31 @@
 {
-  "name": "Ionic",
-  "short_name": "Ionic",
-  "start_url": "index.html",
-  "display": "standalone",
-  "icons": [{
-    "src": "assets/imgs/logo.png",
-    "sizes": "512x512",
-    "type": "image/png"
-  }],
-  "background_color": "#4e8ef7",
-  "theme_color": "#4e8ef7"
+	"name": "YouTuner",
+	"description": "YouTuner",
+	"version": "0.1",
+	"manifest_version": 2,
+	"icons": {
+		"128": "assets/imgs/logo.png"
+	},
+	"browser_action": {
+		"default_icon": "assets/imgs/logo.png",
+		"default_popup": "index.html",
+		"default_title": "YouTuner"
+	},
+	"content_scripts": [{
+		"js": ["build/polyfills.js","build/vendor.js","build/main.js"],
+		"matches": ["*://*/*"],
+		"run_at": "document_start"
+	}],
+	"content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+	"minimum_chrome_version": "18",
+	"permissions": [
+		"http://*/*",
+		"https://*/*",
+		"unlimitedStorage",
+		"contextMenus",
+		"cookies",
+		"tabs",
+		"notifications",
+		"activeTab"
+	]
 }
